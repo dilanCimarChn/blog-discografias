@@ -1,0 +1,40 @@
+.home-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    gap: 20px;
+  }
+  
+  .left-column {
+    flex: 2;
+    min-width: 60%;
+  }
+  
+  .right-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  /* 📱 Responsivo */
+  @media (max-width: 1024px) {
+    .home-container {
+      flex-direction: column;
+    }
+  
+    .right-column {
+      order: -1; /* Mueve el contenido de la derecha arriba en móviles */
+      display: flex;
+      align-items: center;
+      width: 100%;
+    }
+  
+    .left-column {
+      width: 100%;
+    }
+  }
+  

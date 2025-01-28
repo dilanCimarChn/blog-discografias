@@ -1,0 +1,39 @@
+.buscador {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .buscador input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+  }
+  
+  .buscador button {
+    background: green;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: 10px;
+  }
+  
+  .buscador button:hover {
+    background: darkgreen;
+  }
+  
+  /* 📱 Responsivo */
+  @media (max-width: 768px) {
+    .buscador {
+      width: 100%;
+    }
+  }
+  

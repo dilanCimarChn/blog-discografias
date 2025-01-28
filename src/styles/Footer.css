@@ -1,0 +1,21 @@
+.footer {
+    background: black;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-size: 14px;
+    margin-top: 20px;
+  }
+  
+  .footer p {
+    margin: 0;
+  }
+  
+  /* 📌 Responsivo */
+  @media (max-width: 768px) {
+    .footer {
+      font-size: 12px;
+      padding: 10px;
+    }
+  }
+  

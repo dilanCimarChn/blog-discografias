@@ -1,0 +1,113 @@
+/* 📌 Contenedor Principal */
+.album-detail-container {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 20px auto;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* 📌 Columna Izquierda - Detalles del Álbum */
+.left-column {
+  width: 70%;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.album-cover {
+  width: 100%;
+  max-height: 250px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+/* 📌 Lista de Canciones en Estilo Accordion */
+.song-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.song-item {
+  border-bottom: 1px solid #ccc;
+  padding: 10px 0;
+}
+
+.song-title {
+  width: 100%;
+  background: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px;
+  text-align: left;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.song-title:hover {
+  background: #388E3C;
+}
+
+.song-details {
+  background: #f8f9fa;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+
+/* 📌 Botón de Descarga */
+.download-btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 15px;
+  background: #FF9800;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.download-btn:hover {
+  background: #E68900;
+}
+
+/* 📌 Columna Derecha - Buscador, Entradas Recientes, Categorías */
+.right-column {
+  width: 25%;
+}
+
+/* 📌 Estilos Responsivos */
+@media (max-width: 1024px) {
+  .album-detail-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .left-column,
+  .right-column {
+    width: 100%;
+  }
+
+  .right-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .song-title {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .song-title {
+    font-size: 12px;
+  }
+}

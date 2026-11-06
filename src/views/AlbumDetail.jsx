@@ -1,3 +1,4 @@
+import { apiGet } from '../services/api';
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Categorias from "../components/Categorias";
@@ -15,22 +16,21 @@ const AlbumDetail = () => {
   const [selectedSong, setSelectedSong] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/albums/${id}`)
-      .then((res) => res.json())
-      .then((data) => setAlbum(data))
-      .catch((error) => setError(error.message));
-
-    fetch(`http://localhost:5000/api/canciones?album_id=${id}`)
-      .then((res) => res.json())
-      .then((data) => setCanciones(data));
-
-    fetch("http://localhost:5000/api/categorias")
-      .then((res) => res.json())
-      .then((data) => setCategorias(data));
-
-    fetch("http://localhost:5000/api/albums")
-      .then((res) => res.json())
-      .then((data) => setAlbums(data));
+    const controller = new AbortController();
+    const options = { signal: controller.signal };
+    setAlbum(null);
+    setError(null);
+    Promise.all([apiGet(`albums/${id}`, options), apiGet(`canciones?album_id=${id}`, options),
+      apiGet('categorias', options), apiGet('albums', options)])
+      .then(([albumRow, songRows, categoryRows, albumRows]) => {
+        if (controller.signal.aborted) return;
+        setAlbum(albumRow);
+        setCanciones(Array.isArray(songRows) ? songRows : []);
+        setCategorias(Array.isArray(categoryRows) ? categoryRows : []);
+        setAlbums(Array.isArray(albumRows) ? albumRows : []);
+      })
+      .catch(error => { if (!controller.signal.aborted) setError(error.message); });
+    return () => controller.abort();
   }, [id]);
 
   // ✅ Aplicar filtro y redirigir correctamente a Inicio con el filtro activo

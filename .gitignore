@@ -22,3 +22,10 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+
+# Private runtime configuration
+.env
+.env.*
+!.env.example
+backend/.env
